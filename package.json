@@ -1,0 +1,11 @@
+{
+  "name": "frogger",
+  "version": "1.0.0",
+  "description": "browser game",
+  "main": "index.js",
+  "scripts": {
+    "test": "esling --init"
+  },
+  "author": "Oleksandr",
+  "license": "ISC"
+}
