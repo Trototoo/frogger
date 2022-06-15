@@ -6,7 +6,7 @@
   width: 600px;
   height: 600px;
   transform: translate(-50%, -50%);
-  background: url("./src/resources/images/background.png");
+  background: url("../resources/images/background.png");
 }
 canvas {
   position: absolute;
