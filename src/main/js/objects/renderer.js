@@ -21,7 +21,7 @@ export class Renderer {
     this.frog.src = "../resources/images/frog_spritesheet.png";
   }
   renderBackground(ctx) {
-    ctx.backgroundCtx.drawImage(this.background, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    ctx.bottomCtx.drawImage(this.background, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   }
   clear(ctx) {
     ctx.bottomCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
