@@ -1,7 +1,7 @@
 import { Obstacle } from "./obstacle.js";
 import {
   numberOfCarTypes,
-  gameSpeed,
+  configuration,
   GRID,
   CANVAS_HEIGHT,
   CANVAS_WIDTH
@@ -37,7 +37,7 @@ export class Car extends Obstacle {
   }
 
   update() {
-    this.x += this.speed * gameSpeed;
+    this.x += this.speed * configuration.gameSpeed;
     if (this.speed > 0 && this.x > CANVAS_WIDTH + this.width) {
       this.x = 0 - this.width;
       this.updateCarType();
@@ -86,5 +86,8 @@ export class Car extends Obstacle {
       ));
     }
     return cars;
+  }
+  collide(frog) {
+    frog.collideCar();
   }
 }

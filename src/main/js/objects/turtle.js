@@ -2,7 +2,7 @@ import { Obstacle } from './obstacle.js';
 import {
   CANVAS_WIDTH,
   CANVAS_HEIGHT,
-  gameSpeed,
+  configuration,
   GRID,
   numberOfTurtleTypes,
   turtleSprite
@@ -47,7 +47,7 @@ export class Turtle extends Obstacle {
   }
 
   update() {
-    this.x += this.speed * gameSpeed;
+    this.x += this.speed * configuration.gameSpeed;
     if (this.x > CANVAS_WIDTH + this.width){
       this.x = 0 - this.width;
       this.updateTurtleType();
@@ -72,5 +72,7 @@ export class Turtle extends Obstacle {
     }
     return turtles;
   }
-
+  collide(frog) {
+    frog.collideWaterObstacle(this);
+  }
 }

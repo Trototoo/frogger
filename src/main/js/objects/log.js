@@ -1,5 +1,5 @@
 import { Obstacle } from "./obstacle.js";
-import { CANVAS_HEIGHT, CANVAS_WIDTH, gameSpeed, GRID } from "./config.js";
+import { CANVAS_HEIGHT, CANVAS_WIDTH, configuration, GRID } from "./config.js";
 import { Renderer } from "./renderer.js";
 
 const renderer = new Renderer();
@@ -21,7 +21,7 @@ export class Log extends Obstacle {
   }
 
   update() {
-    this.x += this.speed * gameSpeed;
+    this.x += this.speed * configuration.gameSpeed;
     if (this.x > CANVAS_WIDTH + this.width) {
       this.x = 0 - this.width;
     }
@@ -45,5 +45,8 @@ export class Log extends Obstacle {
         ));
     }
     return logs;
+  }
+  collide(frog) {
+    frog.collideWaterObstacle(this);
   }
 }
