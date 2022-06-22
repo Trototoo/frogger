@@ -59,7 +59,7 @@ export class Turtle extends Obstacle {
     const minDistance = 200;
     const randDistance = 70;
     const row = 6;
-    const yCordFix = 10;
+    const yCordFix = 15;
     const numberOfTurtles = 4;
     for (let i = 0; i < numberOfTurtles; i++) {
       turtles.push(new Turtle(
