@@ -10,23 +10,26 @@ export let frame = 0;
 const obstacleFactory = new ObstacleFactory();
 const obstaclesArray = obstacleFactory.createObstacles();
 const frog = new Frog();
+const fps = 70;
 
 function animate() {
-  renderer.clear(gameContext);
-  renderer.renderBackground(gameContext);
-  obstaclesArray.forEach(obstacle => {
-    obstacle.show(gameContext);
-  });
-  frog.draw(gameContext);
-  handleScoreboard(gameContext);
-  frame++;
-  const collidedObject = obstaclesArray.find(obstacle => frog.collides(obstacle));
-  if (collidedObject !== undefined) {
-    collidedObject.collide(frog);
-  } else if (frog.y < 250 && frog.y > 100) {
-    restartLvl(frog);
-  }
-  requestAnimationFrame(animate);
+  setTimeout(() => {
+    renderer.clear(gameContext);
+    renderer.renderBackground(gameContext);
+    obstaclesArray.forEach(obstacle => {
+      obstacle.show(gameContext);
+    });
+    frog.draw(gameContext);
+    handleScoreboard(gameContext);
+    frame++;
+    const collidedObject = obstaclesArray.find(obstacle => frog.collides(obstacle));
+    if (collidedObject !== undefined) {
+      collidedObject.collide(frog);
+    } else if (frog.y < 250 && frog.y > 100) {
+      restartLvl(frog);
+    }
+    requestAnimationFrame(animate);
+  }, 1000 / fps);
 }
 
 animate();
