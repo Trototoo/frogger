@@ -1,6 +1,7 @@
-import { CANVAS_WIDTH, CANVAS_HEIGHT, GRID, configuration} from "./config.js";
-import { Renderer } from "./renderer.js";
-import { restartLvl, nextLvl } from "./utilities.js";
+import { configuration} from "../util/config.js";
+import { Renderer } from "../util/renderer.js";
+import { restartLvl, nextLvl } from "../util/utilities.js";
+import { GameContext } from "./gameContext.js";
 
 const renderer = new Renderer();
 
@@ -10,8 +11,8 @@ export class Frog {
     this.spriteHeight = 250;
     this.width = this.spriteWidth / 5;
     this.height = this.spriteHeight / 5;
-    this.x = CANVAS_WIDTH / 2 - this.width / 2;
-    this.y = CANVAS_HEIGHT - this.height - 40;
+    this.x = GameContext.GAME_WIDTH / 2 - this.width / 2;
+    this.y = GameContext.GAME_HEIGHT - this.height - 40;
     this.moving = false;
     this.frameX = 0;
     this.frameY = 0;
@@ -29,7 +30,7 @@ export class Frog {
       this.moving = true;
       this.frameY = 0;
       if (this.y - this.height * 2 > 0) {
-        this.y -= GRID;
+        this.y -= GameContext.GRID_SIZE;
       }
     }
     if (this.y < 100) {
@@ -41,8 +42,8 @@ export class Frog {
     if (!this.moving) {
       this.moving = true;
       this.frameY = 3;
-      if (this.y < CANVAS_HEIGHT - this.height * 2) {
-        this.y += GRID;
+      if (this.y < GameContext.GAME_HEIGHT - this.height * 2) {
+        this.y += GameContext.GRID_SIZE;
       }
     }
   }
@@ -52,7 +53,7 @@ export class Frog {
       this.moving = true;
       this.frameY = 2;
       if (this.x > this.width) {
-        this.x -= GRID;
+        this.x -= GameContext.GRID_SIZE;
       }
     }
   }
@@ -61,8 +62,8 @@ export class Frog {
     if (!this.moving) {
       this.moving = true;
       this.frameY = 1;
-      if (this.x < CANVAS_WIDTH - this.width * 2) {
-        this.x += GRID;
+      if (this.x < GameContext.GAME_WIDTH - this.width * 2) {
+        this.x += GameContext.GRID_SIZE;
       }
     }
   }
@@ -94,8 +95,8 @@ export class Frog {
       this.y + this.height < obstacle.y);
   }
   reset() {
-    this.x = CANVAS_WIDTH / 2 - this.width / 2;
-    this.y = CANVAS_HEIGHT - this.height - 40;
+    this.x = GameContext.GAME_WIDTH / 2 - this.width / 2;
+    this.y = GameContext.GAME_HEIGHT - this.height - 40;
     this.frameX = 0;
     this.frameY = 0;
   }

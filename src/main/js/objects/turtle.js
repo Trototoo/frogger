@@ -1,14 +1,12 @@
 import { Obstacle } from './obstacle.js';
 import {
-  CANVAS_WIDTH,
-  CANVAS_HEIGHT,
   configuration,
-  GRID,
   numberOfTurtleTypes,
   turtleSprite
-} from "./config.js";
+} from "../util/config.js";
 import { frame } from '../index.js';
-import { Renderer } from './renderer.js';
+import { Renderer } from '../util/renderer.js';
+import { GameContext } from "./gameContext.js";
 
 const renderer = new Renderer();
 
@@ -48,7 +46,7 @@ export class Turtle extends Obstacle {
 
   update() {
     this.x += this.speed * configuration.gameSpeed;
-    if (this.x > CANVAS_WIDTH + this.width){
+    if (this.x > GameContext.GAME_WIDTH + this.width){
       this.x = 0 - this.width;
       this.updateTurtleType();
     }
@@ -64,9 +62,9 @@ export class Turtle extends Obstacle {
     for (let i = 0; i < numberOfTurtles; i++) {
       turtles.push(new Turtle(
         i * minDistance + Math.random() * randDistance,
-        CANVAS_HEIGHT - GRID * row - yCordFix,
-        GRID,
-        GRID,
+        GameContext.GAME_HEIGHT - GameContext.GRID_SIZE * row - yCordFix,
+        GameContext.GRID_SIZE,
+        GameContext.GRID_SIZE,
         1
       ));
     }

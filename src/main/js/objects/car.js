@@ -1,12 +1,7 @@
 import { Obstacle } from "./obstacle.js";
-import {
-  numberOfCarTypes,
-  configuration,
-  GRID,
-  CANVAS_HEIGHT,
-  CANVAS_WIDTH
-} from "./config.js";
-import { Renderer } from "./renderer.js";
+import { numberOfCarTypes, configuration } from "../util/config.js";
+import { Renderer } from "../util/renderer.js";
+import { GameContext } from "./gameContext.js";
 
 const renderer = new Renderer();
 
@@ -27,8 +22,8 @@ export class Car extends Obstacle {
       renderer.cars,
       this.frameX * this.width,
       this.carType * this.height,
-      GRID * 2,
-      GRID,
+      GameContext.GRID_SIZE * 2,
+      GameContext.GRID_SIZE,
       this.x,
       this.y,
       this.width,
@@ -38,11 +33,11 @@ export class Car extends Obstacle {
 
   update() {
     this.x += this.speed * configuration.gameSpeed;
-    if (this.speed > 0 && this.x > CANVAS_WIDTH + this.width) {
+    if (this.speed > 0 && this.x > GameContext.GAME_WIDTH + this.width) {
       this.x = 0 - this.width;
       this.updateCarType();
     } else if (this.speed < 0 && this.x < 0 - this.width) {
-      this.x = CANVAS_WIDTH + this.width;
+      this.x = GameContext.GAME_WIDTH + this.width;
       this.updateCarType();
     }
   }
@@ -55,32 +50,32 @@ export class Car extends Obstacle {
     const yCordFix = 25;
     const speed = 1;
     const rows = {
-      first: CANVAS_HEIGHT - GRID * 2 - yCordFix,
-      second: CANVAS_HEIGHT - GRID * 3 - yCordFix,
-      third: CANVAS_HEIGHT - GRID * 4 - yCordFix
+      first: GameContext.GAME_HEIGHT - GameContext.GRID_SIZE * 2 - yCordFix,
+      second: GameContext.GAME_HEIGHT - GameContext.GRID_SIZE * 3 - yCordFix,
+      third: GameContext.GAME_HEIGHT - GameContext.GRID_SIZE * 4 - yCordFix
     }
     for (let i = 0; i < numberOfCars; i++) {
       cars.push(new Car(
         i * minDistance + Math.random() * randDistance,
         rows.first,
-        GRID * 2,
-        GRID,
+        GameContext.GRID_SIZE * 2,
+        GameContext.GRID_SIZE,
         speed,
         0
       ));
       cars.push(new Car(
         i * minDistance + Math.random() * randDistance,
         rows.second,
-        GRID * 2,
-        GRID,
+        GameContext.GRID_SIZE * 2,
+        GameContext.GRID_SIZE,
         speed * -1,
         1
       ));
       cars.push(new Car(
         i * minDistance + Math.random() * randDistance,
         rows.third,
-        GRID * 2,
-        GRID,
+        GameContext.GRID_SIZE * 2,
+        GameContext.GRID_SIZE,
         speed,
         0
       ));

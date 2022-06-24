@@ -1,4 +1,4 @@
-import { CANVAS_WIDTH, CANVAS_HEIGHT } from "./config.js";
+import { GameContext } from "../objects/gameContext.js";
 
 export class Renderer {
   constructor() {
@@ -21,11 +21,11 @@ export class Renderer {
     this.frog.src = "src/resources/images/frog_spritesheet.png";
   }
   renderBackground(ctx) {
-    ctx.bottomCtx.drawImage(this.background, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    ctx.bottomCtx.drawImage(this.background, 0, 0, GameContext.GAME_WIDTH, GameContext.GAME_HEIGHT);
   }
   clear(ctx) {
-    ctx.bottomCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    ctx.middleCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    ctx.upperCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    ctx.bottomCtx.clearRect(0, 0, GameContext.GAME_WIDTH, GameContext.GAME_HEIGHT);
+    ctx.middleCtx.clearRect(0, 0, GameContext.GAME_WIDTH, GameContext.GAME_HEIGHT);
+    ctx.upperCtx.clearRect(0, 0, GameContext.GAME_WIDTH, GameContext.GAME_HEIGHT);
   }
 }

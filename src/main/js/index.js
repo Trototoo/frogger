@@ -1,8 +1,8 @@
 import { GameContext } from "./objects/gameContext.js";
-import { Renderer } from "./objects/renderer.js";
+import { Renderer } from "./util/renderer.js";
 import { ObstacleFactory } from "./factories/obstacleFactory.js";
 import { Frog } from "./objects/frog.js";
-import { handleScoreboard, restartLvl } from "./objects/utilities.js";
+import { handleScoreboard, restartLvl } from "./util/utilities.js";
 
 const gameContext = new GameContext();
 const renderer = new Renderer();

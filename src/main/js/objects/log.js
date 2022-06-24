@@ -1,6 +1,7 @@
 import { Obstacle } from "./obstacle.js";
-import { CANVAS_HEIGHT, CANVAS_WIDTH, configuration, GRID } from "./config.js";
-import { Renderer } from "./renderer.js";
+import { configuration } from "../util/config.js";
+import { Renderer } from "../util/renderer.js";
+import { GameContext } from "./gameContext.js";
 
 const renderer = new Renderer();
 
@@ -22,7 +23,7 @@ export class Log extends Obstacle {
 
   update() {
     this.x += this.speed * configuration.gameSpeed;
-    if (this.x > CANVAS_WIDTH + this.width) {
+    if (this.x > GameContext.GAME_WIDTH + this.width) {
       this.x = 0 - this.width;
     }
   }
@@ -38,9 +39,9 @@ export class Log extends Obstacle {
     for (let i = 0; i < numberOfLogs; i++) {
       logs.push(new Log(
         i * minDistance + Math.random() * randDistance,
-        CANVAS_HEIGHT - GRID * row - yCordFix,
-        GRID * 2,
-        GRID,
+        GameContext.GAME_HEIGHT - GameContext.GRID_SIZE * row - yCordFix,
+        GameContext.GRID_SIZE * 2,
+        GameContext.GRID_SIZE,
         speed
         ));
     }
