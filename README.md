@@ -1,4 +1,4 @@
-## Tanks.js
+## Frogger.js
 
 Control:
 
