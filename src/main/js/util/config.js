@@ -13,3 +13,7 @@ export const turtleSprite = {
   width: 70,
   height: 70,
 }
+export const waterField = {
+  upperY: 100,
+  bottomY: 250
+}

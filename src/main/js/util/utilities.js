@@ -1,5 +1,6 @@
 import { configuration } from "./config.js";
 import { GameContext } from "../objects/gameContext.js";
+import { sounds } from "./sound.js"
 
 export function restartLvl(frog) {
   configuration.gameSpeed = 1;
@@ -8,13 +9,12 @@ export function restartLvl(frog) {
 }
 
 export function nextLvl(frog) {
-  setTimeout(() => {
-    configuration.nextSpeed();
-    frog.reset();
-    if (configuration.score > configuration.highScore) {
-      configuration.highScore = configuration.score;
-    }
-  }, 200);
+  sounds.playSound(sounds.winSound);
+  configuration.nextSpeed();
+  frog.reset();
+  if (configuration.score > configuration.highScore) {
+    configuration.highScore = configuration.score;
+  }
 }
 
 export function handleScoreboard(ctx) {

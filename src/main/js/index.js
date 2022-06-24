@@ -2,7 +2,9 @@ import { GameContext } from "./objects/gameContext.js";
 import { Renderer } from "./util/renderer.js";
 import { ObstacleFactory } from "./factories/obstacleFactory.js";
 import { Frog } from "./objects/frog.js";
-import { handleScoreboard, restartLvl } from "./util/utilities.js";
+import {handleScoreboard, nextLvl, restartLvl} from "./util/utilities.js";
+import { waterField } from "./util/config.js";
+import { sounds } from "./util/sound.js";
 
 const gameContext = new GameContext();
 const renderer = new Renderer();
@@ -25,8 +27,12 @@ function animate() {
     const collidedObject = obstaclesArray.find(obstacle => frog.collides(obstacle));
     if (collidedObject !== undefined) {
       collidedObject.collide(frog);
-    } else if (frog.y < 250 && frog.y > 100) {
+    } else if (frog.y < waterField.bottomY && frog.y > waterField.upperY) {
+      sounds.playSound(sounds.waterHitSound);
       restartLvl(frog);
+    }
+    if (frog.y < waterField.upperY) {
+      nextLvl(frog);
     }
     requestAnimationFrame(animate);
   }, 1000 / fps);

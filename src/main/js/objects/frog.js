@@ -1,7 +1,8 @@
 import { configuration} from "../util/config.js";
 import { Renderer } from "../util/renderer.js";
-import { restartLvl, nextLvl } from "../util/utilities.js";
+import { restartLvl } from "../util/utilities.js";
 import { GameContext } from "./gameContext.js";
+import { sounds } from "../util/sound.js";
 
 const renderer = new Renderer();
 
@@ -19,6 +20,7 @@ export class Frog {
   }
   jump() {
     if (this.moving === false) {
+      sounds.playSound(sounds.jumpSound);
       this.frameX = 1;
     } else if (this.frameX === 1) {
       this.frameX = 0;
@@ -32,9 +34,6 @@ export class Frog {
       if (this.y - this.height * 2 > 0) {
         this.y -= GameContext.GRID_SIZE;
       }
-    }
-    if (this.y < 100) {
-      nextLvl(this);
     }
   }
   moveDown() {

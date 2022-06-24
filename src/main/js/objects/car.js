@@ -2,6 +2,7 @@ import { Obstacle } from "./obstacle.js";
 import { numberOfCarTypes, configuration } from "../util/config.js";
 import { Renderer } from "../util/renderer.js";
 import { GameContext } from "./gameContext.js";
+import { sounds } from  "../util/sound.js";
 
 const renderer = new Renderer();
 
@@ -84,5 +85,6 @@ export class Car extends Obstacle {
   }
   collide(frog) {
     frog.collideCar();
+    sounds.playSound(sounds.carHitSound);
   }
 }
