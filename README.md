@@ -2,7 +2,7 @@
 
 Control:
 
-WSAD -  move,  Enter - shoot;
+WSAD -  move;
 
 ![image](https://user-images.githubusercontent.com/91664086/175532427-e89fc137-cb1f-4f7f-9ee2-e194bb51cece.png)
 
